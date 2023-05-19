@@ -3,15 +3,15 @@
 // Tiene que incluir los datos de los temperamentos asociadas a esta raza.
 // Debe funcionar tanto para los perros de la API como para los de la base de datos.
 
-const { Dog, Temperament } = require('../db');
-const getApiData = require('./getApiData');
+const { Dogs, Temperaments } = require('../db.js');
+const getApiData = require('./getApiData.js');
 
 
 const getBreedsDogById = async (req, res) => {
     const { id } = req.params;
     try {
         let dog;
-        const dogBD = await Dog.findByPk(id, { include: Temperament });
+        const dogBD = await Dogs.findByPk(id, { include: Temperaments });
         if(dogBD){
             dog = dogBD.toJSON();
         }else{
