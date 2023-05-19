@@ -9,6 +9,8 @@ const Temperament = require('../models/Temperaments');
 const getBreedsDogs = require('../controllers/getBreedsDogs');
 const getBreedsDogsById = require('../controllers/getBreedsDogsById');
 const getBreedsDogsByName = require('../controllers/getBreedsDogsByName');
+const postDogs = require('../controllers/postDogs');
+const getDogsByTemperaments = require('../controllers/getDogsByTemperaments');
 
 const router = Router();
 
@@ -25,43 +27,10 @@ router.get('/dogs/:id', getBreedsDogsById);
 router.get('/name', getBreedsDogsByName);
 
 //! POST | /dogs
-router.post('/dogs', async (req, res) => {
-    const { name, height, weight, life_span, temperament } = req.body;
-    try { // creo la raza de perro
-        const newDog = await Dog.create({
-            name, 
-            height, 
-            weight, 
-            life_span
-        });
-
-        const temperaments = await Temperament.findAll({
-            where:{
-                name:{
-                    [Op.in]: temperament.map(temp => temp.toLoweCase())
-                }
-            }
-        });
-
-        await newDog.setTemperaments(temperaments);
-
-        return res.status(200).json(newDog);
-    } catch (error) {
-        console.error(error);
-        return res.status(500).json({ error: 'There was an error creating the dog' });
-    }
-});
+router.post('/dogs', postDogs);
 
 //! GET | /temperaments
-const URL_BASE = '';
-router.get('/temperaments', (req, res) => {
-    try {
-        
-    } catch (error) {
-        
-    }
-});
-
+router.get('/temperaments', getDogsByTemperaments);
 
 
 module.exports = router;
