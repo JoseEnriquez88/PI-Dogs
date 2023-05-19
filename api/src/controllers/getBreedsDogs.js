@@ -12,7 +12,7 @@ const getBreedsDogs = async (req, res) => {
         return res.status(200).json(breeds);
     } catch (error) {
         console.error(error);
-        return res.status(500).json({ message: 'Internal server error' });
+        return res.status(500).json({ message: error.message });
     };
 };
 

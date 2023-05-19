@@ -1,5 +1,5 @@
 const { Router } = require('express');
-const { Op } = require('sequelize');
+
 // Importar todos los routers;
 // Ejemplo: const authRouter = require('./auth.js');
 const Dog = require('../models/Dogs');
@@ -8,6 +8,7 @@ const Temperament = require('../models/Temperaments');
 //importo los controladores
 const getBreedsDogs = require('../controllers/getBreedsDogs');
 const getBreedsDogsById = require('../controllers/getBreedsDogsById');
+const getBreedsDogsByName = require('../controllers/getBreedsDogsByName');
 
 const router = Router();
 
@@ -21,27 +22,7 @@ router.get('/dogs', getBreedsDogs);
 router.get('/dogs/:id', getBreedsDogsById);
 
 //! GET | /dogs/name?="..."
-router.get('/dogs/name', async (req, res) => {
-    const { name } = req.query;
-    try {
-        const dogs = await Dog.findAll({
-            where:{
-                name:{
-                    [Op.iLike]: `%${name}`
-                }
-            },
-            include:{
-                association: 'temperaments',
-                attributes: ['name'],
-                through: { attributes: [] }
-            }
-        });
-        if(!dogs.length === 0) return res.status(404).send('No results found');
-        return res.json(dogs);
-    } catch (error) {
-       return res.status(500).json({ message: 'Internal server error' });
-    }
-});
+router.get('/name', getBreedsDogsByName);
 
 //! POST | /dogs
 router.post('/dogs', async (req, res) => {

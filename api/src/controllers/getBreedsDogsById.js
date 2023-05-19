@@ -14,13 +14,13 @@ const getBreedsDogById = async (req, res) => {
         const dogBD = await Dog.findByPk(id, { include: Temperament });
         if(dogBD){
             dog = dogBD.toJSON();
-        } else {
+        }else{
             const apiData = await getApiData();
             dog = apiData.find(dogg => dogg.id === +id);
         }
-        if (dog) {
+        if(dog){
             res.json(dog);
-        } else {
+        }else{
             res.status(404).json({ message: 'Breed not found' });
         }
     } catch (error) {
