@@ -3,8 +3,8 @@ const { DB_USER, DB_PASSWORD, DB_HOST, DB_NAME } = process.env;
 const { Sequelize } = require('sequelize');
 
 // importo modelos
-// const Dog = require('./models/Dog');
-// const Temperament = require('./models/Temperaments');
+// const Dogs = require('./models/Dog');
+// const Temperaments = require('./models/Temperaments');
 
 const fs = require('fs');
 const path = require('path');
@@ -38,8 +38,8 @@ const { Temperaments } = sequelize.models;
 
 // Aca vendrian las relaciones
 // Product.hasMany(Reviews);
-Dogs.belongsToMany(Temperaments, { through: 'dog_temperament' });
-Temperaments.belongsToMany(Dogs, { through: 'dog_temperament' });
+Dogs.belongsToMany(Temperaments, { through: 'dog_temperaments' });
+Temperaments.belongsToMany(Dogs, { through: 'dog_temperaments' });
 
 
 module.exports = {

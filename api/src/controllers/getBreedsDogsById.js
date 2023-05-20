@@ -21,10 +21,10 @@ const getBreedsDogById = async (req, res) => {
         if(dog){
             res.json(dog);
         }else{
-            res.status(404).json({ message: 'Breed not found' });
+            throw new Error('No breed found');
         }
     } catch (error) {
-        res.status(500).json({ message: "Error getting breed's details" });
+        res.status(500).json({ message: error.message });
     }
 };
 
