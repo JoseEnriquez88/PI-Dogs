@@ -18,6 +18,7 @@
 //                       `=---='
 //     ~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~
 const server = require('./src/app.js');
+const getDogsByTemperaments = require('./src/controllers/getDogsByTemperaments.js');
 const { conn } = require('./src/db.js');
 
 // Syncing all the models at once.
@@ -27,6 +28,7 @@ conn
   server.listen(3001, () => {
     // console.log('%s listening at', 3001); // eslint-disable-line no-console
     console.log('Listening on port', 3001); // eslint-disable-line no-console
+    // getDogsByTemperaments();
   });
 })
 .catch((error) => console.log(error));

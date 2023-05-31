@@ -11,20 +11,26 @@ const getBreedsDogById = async (req, res) => {
     const { id } = req.params;
     try {
         let dog;
-        const dogBD = await Dogs.findByPk(id, { include: Temperaments });
-        if(dogBD){
-            dog = dogBD.toJSON();
+        // primero verifico si el id es numero o UUID para la BD
+        if(!isNaN(id)){
+            const data = await getApiData(); // busco por numero en la API
+            dog = data.find(dogAPI => dogAPI.id === +id);
+
+            if(dog) return res.status(200).json(dog) // si encuentra el perro en la API mando estado 200
+            throw new Error(`no se encontró un perro con el id: ${id}`); // caso contrario lanzo el error con mensaje
         }else{
-            const apiData = await getApiData();
-            dog = apiData.find(dogg => dogg.id === +id);
-        }
-        if(dog){
-            res.json(dog);
-        }else{
-            throw new Error('No breed found');
+            const dogBD = await Dogs.findByPk(id, { include: Temperaments }) // busco por UUID en la BD
+
+            if(dogBD){
+                dog = dogBD.toJsON();
+                return res.status(200).json(dog);
+            }else{
+                throw new Error(`no se encontró un perro con el id: ${id}`);
+            }
         }
     } catch (error) {
-        res.status(500).json({ message: error.message });
+        console.error(error);
+        return res.status(500).json({ message: error.message });
     }
 };
 

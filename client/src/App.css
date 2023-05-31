@@ -1,6 +1,14 @@
 .App {
   text-align: center;
+  min-height: 100vh;
+  background-image: url('../src/assets/frisbee-para-perros.jpeg');
+  background-size: cover;
+  background-repeat: no-repeat;
+  background-attachment: fixed;
+  padding-bottom: 100vh; 
 }
+
+
 
 .App-logo {
   height: 40vmin;

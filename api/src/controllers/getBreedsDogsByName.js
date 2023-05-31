@@ -6,9 +6,11 @@ const getBreedsDogsByName = async (req, res) => {
   const { name } = req.query;
   try {
     const lowerCaseName = name.toLowerCase();
+    
     const apiData = await getApiData();
     const apiDogs = apiData.filter((dog) => dog.name.toLowerCase().includes(lowerCaseName));
-
+    if(apiDogs) return res.status(200).json(apiDogs);
+    
     const dogBD = await Dogs.findAll({
       where: {
         name: {
@@ -20,7 +22,7 @@ const getBreedsDogsByName = async (req, res) => {
 
     const dogs = [...apiDogs, ...dogBD];
 
-    if (dogs.length === 0) throw new Error('No dogs breeds found with that name');
+    if (dogs.length === 0) throw new Error(`No se encontraron razas de perro con el siguiente nombre: ${nombre}`);
 
     return res.json(dogs);
   } catch (error) {

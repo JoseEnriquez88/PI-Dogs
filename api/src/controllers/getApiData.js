@@ -1,6 +1,5 @@
 const axios = require('axios');
 //obtengo los datos de la api
-
 const URL = 'https://api.thedogapi.com/v1/breeds';
 
 const getApiData = async () => {
