@@ -1,46 +1,66 @@
-.card {
-  display: flex;
-  flex-direction: column;
-  align-items: center;
-  justify-content: center;
-  background-color: #fff;
-  border-radius: 8px;
-  box-shadow: 0 2px 10px rgba(0, 0, 0, 0.1);
-  padding: 2rem;
-  width: 400px;
-  max-width: 90%;
-  margin: 0 auto;
+@import url('https://fonts.googleapis.com/css2?family=Sniglet&display=swap');
+
+.mainCntnr {
+    display: flex;
+    flex-direction: column;
+    /* justify-content: center; */
+    background-color: #faf6e9;
+    margin: 0 auto;
+    width: 60%;
+    padding: 5px;
+    border: 3px solid #494949;
+    border-radius: 20px;
+    margin-top: 20px;
+    margin-bottom: 20px;
 }
 
-.content {
-  background-color: transparent;
-  padding: 2rem;
-  text-align: center;
+.titulo {
+    font-family: Sniglet, cursive;
+    color: #494949;
+    text-align: center;
+    margin-top: 10px;
 }
 
-.h1 {
-  font-size: 2.5rem;
-  color: #333;
-  margin-bottom: 1rem;
+.subContainer{
+    display: flex;
+    justify-content: center;
+    gap: 1rem;
 }
 
-.p {
-  font-size: 1.2rem;
-  color: #777;
-  margin-bottom: 1.5rem;
+.minorContainer{
+    /* background-color: red; */
+    margin-top: 5rem;
+    width: 450px;
+    height: 150px;
+}
+
+.carouselContainer {
+    /* margin-bottom: 1rem;
+    margin-right: 30rem; */
+}
+
+.txtContainer {
+    /* background-color: black; */
+    width: 300px;
+    height: 150px;
+    margin: 0 auto;
+}
+
+.txt {
+    font-family: 'Sniglet', cursive;
+    font-size: 20px;
+    color: #494949;
 }
 
 .btn {
-  background-color: #f06292;
-  color: #fff;
-  border: none;
-  padding: 0.8rem 1.5rem;
-  font-size: 1rem;
-  border-radius: 4px;
-  cursor: pointer;
-  transition: background-color 0.3s ease;
+    background-color: #494949;
+    padding: 10px;
+    border-radius: 50px;
+    font-family: Sniglet, cursive;
+    color: #fffdf6;
 }
 
-.btn:hover {
-  background-color: #ec407a;
+.btn:hover{
+
+    cursor: pointer;
 }
