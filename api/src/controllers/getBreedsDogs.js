@@ -4,7 +4,7 @@ const getApiData = require('./getApiData');
 
 const getBreedsDogs = async (req, res) => {
     try {
-        const dogBreeds = await getApiData(); //hago la peritcion a la api
+        const dogBreeds = await getApiData(); //hago la peticion a la api
         
         //corroboro que haya razas de perros caso contrario tira mensaje de error
         if(!dogBreeds || dogBreeds.length === 0) throw new Error('No se encontraron razas de perro.');
