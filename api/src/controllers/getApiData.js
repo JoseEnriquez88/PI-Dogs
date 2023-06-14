@@ -8,7 +8,9 @@ const getApiData = async () => {
         return response.data.map(dog => ({
             id: dog.id,
             name: dog.name,
-            image: dog.image?.url,
+            image:{
+                url: dog.image?.url,
+            },
             temperament: dog.temperament?.split(', '),
             weight: {
                 imperial: dog.weight?.imperial,

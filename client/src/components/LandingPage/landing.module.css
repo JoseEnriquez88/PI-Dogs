@@ -3,8 +3,7 @@
 .mainCntnr {
     display: flex;
     flex-direction: column;
-    /* justify-content: center; */
-    background-color: #faf6e9;
+    background-color: #efefef;
     margin: 0 auto;
     width: 60%;
     padding: 5px;
@@ -14,6 +13,10 @@
     margin-bottom: 20px;
 }
 
+.mainCntnr:hover {
+    box-shadow: 0 0.1rem 0.4rem rgba(0, 0, 0, 0.3);
+}
+
 .titulo {
     font-family: Sniglet, cursive;
     color: #494949;
@@ -21,13 +24,13 @@
     margin-top: 10px;
 }
 
-.subContainer{
+.subContainer {
     display: flex;
     justify-content: center;
     gap: 1rem;
 }
 
-.minorContainer{
+.minorContainer {
     /* background-color: red; */
     margin-top: 5rem;
     width: 450px;
@@ -35,8 +38,7 @@
 }
 
 .carouselContainer {
-    /* margin-bottom: 1rem;
-    margin-right: 30rem; */
+    margin-bottom: 1rem;
 }
 
 .txtContainer {
@@ -60,7 +62,6 @@
     color: #fffdf6;
 }
 
-.btn:hover{
-
+.btn:hover {
     cursor: pointer;
 }

@@ -1,9 +1,27 @@
-.footer{
+.footer {
+    display: flex;
+    flex-direction: row;
+    justify-content: space-between;
     background-color: #494949;
     padding: 3rem;
     color: #fff;
 }
 
-.section{
-    float: right;
+.footer p {
+    margin: 0;
+}
+
+.section {
+    display: flex;
+    gap: 1rem;
+}
+
+.section a {
+    transition: color 0.3s ease;
+    color: #fff;
+    text-decoration: none;
+}
+
+.section a:hover {
+    color: cornflowerblue;
 }

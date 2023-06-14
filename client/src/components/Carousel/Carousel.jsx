@@ -32,14 +32,14 @@ const Carousel = (props) => {
             setSelectedImage(images[nextIndex]);
             setSelectedIndex(nextIndex);
             setIsTransitioning(false);
-        }, 500); // Tiempo de transición (ajusta según tus necesidades)
+        }, 900); 
     }, [selectedIndex]);
 
     useEffect(() => {
         if (props.autoplay || !props.showButtons) {
             const interval = setInterval(() => {
                 selectNewImage(selectedIndex, props.images);
-            }, 3000);
+            }, 5000);
             return () => clearInterval(interval);
         }
     }, [props.autoplay, props.images, props.showButtons, selectNewImage, selectedIndex]);

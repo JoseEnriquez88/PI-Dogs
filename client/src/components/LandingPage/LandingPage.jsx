@@ -23,10 +23,6 @@ const LandingPage = () => {
         tresPerrosLago
     ];
 
-    const handleClick = (event) => {
-
-    };
-
 
     return (
         <div className={style.mainCntnr}>
@@ -41,7 +37,9 @@ const LandingPage = () => {
                     <div className={style.txtContainer}>
                         <p className={style.txt}>En esta pagina puedes explorar una amplia variedad de razas de perros y aprender datos interesantes sobre cada una de ellas.</p>
                     </div>
-                    <Link to='/home'></Link><button className={style.btn} onClick={handleClick}>Ir a la pagina principal</button>
+                    <Link to='/home'>
+                        <button className={style.btn} >Ir a la pagina principal</button>
+                    </Link>
                 </div>
             </div>
 

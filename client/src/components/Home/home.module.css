@@ -1,0 +1,33 @@
+.container {
+    background-color: #2a2438;
+    /* background-color: rgba(182, 168, 168, 0.3); */
+    border-radius: 50px;
+    border: 3px solid #5c5470;
+    position: relative;
+    transition: transform 0.3s ease-in-out;
+}
+
+.container:hover {
+    transform: scale(1.15);
+    transition: transform 0.3s ease-in-out;
+    border-radius: 50px;
+    box-shadow:
+        0 15px 20px rgba(0, 0, 0, 0.9),
+        0 -2px 20px rgba(0, 0, 0, 0.9);
+    z-index: 1;
+}
+
+.container:not() {
+    filter: blur(3px);
+    transition: all 0.3s ease-in-out;
+}
+
+.image {
+    border-radius: 50px;
+    display: flex;
+    align-items: flex;
+    position: 0;
+    top: 0;
+    max-width: 200px;
+    border-bottom: 3px solid #5c5470;
+}

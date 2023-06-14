@@ -11,6 +11,7 @@ const getBreedsDogsById = require('../controllers/getBreedsDogsById');
 const getBreedsDogsByName = require('../controllers/getBreedsDogsByName');
 const postDogs = require('../controllers/postDogs');
 const getDogsByTemperaments = require('../controllers/getDogsByTemperaments');
+const getAllDogs = require('../controllers/getAllDogs');
 
 const router = Router();
 
@@ -31,6 +32,11 @@ router.post('/dogs', postDogs);
 
 //! GET | /temperaments
 router.get('/temperaments', getDogsByTemperaments);
+
+// ###
+//!GET /home
+//ruta para obtener los perros para el home en el front
+router.get('/home', getAllDogs);
 
 
 module.exports = router;
