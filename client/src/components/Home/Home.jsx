@@ -1,31 +1,18 @@
 import style from './home.module.css';
 import { Link } from 'react-router-dom';
-import { useEffect } from 'react';
-import { useDispatch, useSelector } from 'react-redux';
-import { getAllDogs } from '../../redux/actions';
 
-const Home = () => {
-  const dispatch = useDispatch();
-  const dogs = useSelector(state => state.breeds);
-
-  useEffect(() => {
-    dispatch(getAllDogs());
-  }, [dispatch]);
+const Home = ({ id, image, name, temperament, weight }) => {
 
   return (
-    <div className={style.Container}>
-      {dogs.map((dog) => (
-        <div key={dog.id}>
-          <img src={dog.image} alt={dog.name} />
-          <h1>Nombre: {dog.name}</h1>
-          <h2>Temperamentos: {dog.temperament?.join(', ')}</h2>
-          <h2>Peso: {dog.weight}</h2>
-          <Link to={`/detail/${dog.id}`}>
-            <button>Haz click para más detalle</button>
-          </Link>
-        </div>
-      ))}
-    </div>
+    <div className={style.container}>
+      <img className={style.img} src={image} alt={name} />
+      <h4 className={style.name}>Nombre: {name}</h4>
+      <h4 className={style.temp}>Temperamentos: {temperament?.join(', ')}</h4>
+      <h4 className={style.weight}>Peso: {weight}</h4>
+      <Link to={`/detail/${id}`}>
+        <button className={style.detail}>Detalles del perro</button>
+      </Link>
+    </div >
   );
 };
 

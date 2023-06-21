@@ -1,16 +1,29 @@
 import './App.css';
 import LandingPage from './components/LandingPage/LandingPage.jsx';
-import Home from './components/Home/Home.jsx';
+import Dogs from './components/Dogs/Dogs.jsx';
 import Detail from './components/Detail/Detail';
 import Footer from './components/Footer/Footer.jsx';
+import Nav from './components/Nav/Nav';
 import { Routes, Route } from 'react-router-dom';
+import { useEffect } from 'react';
+import { useDispatch, useSelector } from 'react-redux';
+import { getAllDogs } from './redux/actions';
 
 function App() {
+  const dispatch = useDispatch();
+  const dogs = useSelector(state => state.breeds);
+
+
+  useEffect(() => {
+    dispatch(getAllDogs());
+  }, [dispatch]);
+
   return (
     <div className="App">
+      <Nav onSearch={onSearch}/>
       <Routes>
         <Route path="/" element={<LandingPage />} />
-        <Route path="/home" element={<Home />} />
+        <Route path="/home" element={<Dogs dogs={dogs} />} />
         <Route path="/detail/:id" element={<Detail />} />
       </Routes>
       <Footer />
@@ -19,3 +32,5 @@ function App() {
 }
 
 export default App;
+
+

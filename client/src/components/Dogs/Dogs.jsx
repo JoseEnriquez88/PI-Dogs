@@ -1,5 +1,5 @@
 import Home from "../Home/Home.jsx";
-import style from './Dogs.module.css';
+import style from './dogs.module.css';
 
 const Dogs = ({ dogs }) => {
     return (
@@ -9,10 +9,10 @@ const Dogs = ({ dogs }) => {
                     return(
                         <Home 
                             key={id}
-                            image={image.url}
+                            image={image}
                             name={name}
                             temperament={temperament}
-                            weight={weight.metric}
+                            weight={weight}
                         />
                     )
                 })

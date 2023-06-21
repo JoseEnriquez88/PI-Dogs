@@ -1,5 +1,5 @@
 const getApiData = require('./getApiData');
-
+//obtiene los perros de la api para renderizar en el home del front
 const getAllDogs = async (req, res) => {
     try {
         const data = await getApiData();

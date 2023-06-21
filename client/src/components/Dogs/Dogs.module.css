@@ -1,7 +1,8 @@
 .dogCards{
     display: flex;
     flex-wrap: wrap;
-    justify-content: space-between;
-    padding: 8em;
+    justify-content: space-evenly;
+    padding: 2em;
+    gap: 1em;
     border-radius: 10em;
 }
