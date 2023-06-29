@@ -5,6 +5,4 @@ const getDogDB = async () => {
     return allDogs;
 };
 
-module.exports = {
-    getDogDB,
-}
+module.exports = getDogDB;

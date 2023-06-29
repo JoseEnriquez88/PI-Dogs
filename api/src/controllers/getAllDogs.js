@@ -1,24 +1,28 @@
+//obtiene los perros de la api y de la base de datos
 const getApiData = require('./getApiData');
-//obtiene los perros de la api para renderizar en el home del front
-const getAllDogs = async (req, res) => {
-    try {
-        const data = await getApiData();
+const getDogsDB = require('./getDogsDB');
 
-        if (!data || data.length === 0) throw new Error('No se encuentran perros para mostrar');
+const getAllDogs = async () => {
+    const dataAPI = await getApiData();
+    const dataDB = await getDogsDB();
 
-        const dogs = data.map(dog => ({
-            id: dog.id,
-            name: dog.name,
-            image: dog.image.url,
-            temperament: dog.temperament,
-            weight: dog.weight.metric,
-        }))
+    const dogsAPI = dataAPI.map(dog => ({
+        id: dog.id,
+        name: dog.name,
+        image: dog.image.url,
+        temperament: dog.temperament,
+        weight: dog.weight.metric,
+    }))
 
-        return res.status(200).json(dogs);
-    } catch (error) {
-        console.log(error);
-        res.status(500).json({ message: error.message });
-    }
+    const dogsDB = dataDB.map(dog => ({
+        id: dog.id,
+        name: dog.name,
+        image: dog.image.url,
+        temperament: dog.temperament,
+        weight: dog.weight.metric,
+    }))
+    const dogs = [...dogsAPI, ...dogsDB];
+    return dogs;
 };
 
 module.exports = getAllDogs;

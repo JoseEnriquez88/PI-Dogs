@@ -4,34 +4,25 @@
 // Debe funcionar tanto para los perros de la API como para los de la base de datos.
 
 const { Dogs, Temperaments } = require('../db.js');
-const getApiData = require('./getApiData.js');
+const URL = 'https://api.thedogapi.com/v1/breeds';
+const axios = require('axios');
 
+const getBreedsDogById = async (id) => {
+    if (isNaN(id)) {
+        const dogsBD = await Dogs.findByPk(id, { include: [Temperaments] });
+        if (!dogsBD) throw new Error('No se encuentran perros en la base de datos.');
 
-const getBreedsDogById = async (req, res) => {
-    const { id } = req.params;
-    try {
-        let dog;
-        // primero verifico si el id es numero o UUID para la BD
-        if(!isNaN(id)){
-            const data = await getApiData(); // busco por numero en la API
-            dog = data.find(dogAPI => dogAPI.id === +id);
+        const dog = dogsBD.toJSON();
+        const temperaments = dog.Temperaments.map((temperament) => temperament.name);
+        dog.temperaments = temperaments;
+        delete dog.Temperaments;
 
-            if(dog) return res.status(200).json(dog) // si encuentra el perro en la API mando estado 200
-            throw new Error(`no se encontró un perro con el id: ${id}`); // caso contrario lanzo el error con mensaje
-        }else{
-            const dogBD = await Dogs.findByPk(id, { include: Temperaments }) // busco por UUID en la BD
-
-            if(dogBD){
-                dog = dogBD.toJsON();
-                return res.status(200).json(dog);
-            }else{
-                throw new Error(`no se encontró un perro con el id: ${id}`);
-            }
-        }
-    } catch (error) {
-        console.error(error);
-        return res.status(500).json({ message: error.message });
+        return dog;
     }
+
+    const dogsApi = (await axios.get(`${URL}/${id}`)).data;
+    if(!dogsApi) throw new Error('No se encuentran perros en la API');
+    return dogsApi;
 };
 
 module.exports = getBreedsDogById;
