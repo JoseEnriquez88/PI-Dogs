@@ -5,7 +5,7 @@ const { Router } = require('express');
 // const Dog = require('../models/Dogs');
 // const Temperament = require('../models/Temperaments');
 
-//importo los controladores
+//importo los handlers
 const getBreedsDogsHandler = require('../handlers/getBreedsDogsHandler');
 const getBreedsDogsByIdHandler = require('../handlers/getBreedsDogByIdHandler');
 const getDogsByNameHandler = require('../handlers/getDogsByNameHandler');
