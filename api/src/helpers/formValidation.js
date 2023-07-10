@@ -14,8 +14,8 @@ const formValidation = (name, image, minHeight, maxHeight, minWeight, maxWeight,
     throw new Error('La imagen debe ser una URL válida o imagen con formato jpg, jpeg o png');
 
     //valido que las sigueintes caracteristicas sean numeros
-    if([minHeight, maxHeight, minWeight, maxWeight].some(data => isNaN(data) || data === 0)) 
-        throw new Error('height, weight y life span tienen que ser números distintos a 0.');
+    // if([minHeight, maxHeight, minWeight, maxWeight].some(data => isNaN(data) || data === 0)) 
+    //     throw new Error('height, weight y life span tienen que ser números distintos a 0.');
 
     //valido que el promedio de estatura este correctamente escrito
     if(minHeight > maxHeight) throw new Error('La estatura mínima no puede ser mayor a la estatura máxima');
@@ -30,6 +30,5 @@ const formValidation = (name, image, minHeight, maxHeight, minWeight, maxWeight,
     if(temperament.length === 0) throw new Error('El perro debe poseer al menos un temperamento.');
 };
 
-module.exports = {
-    formValidation
-};
+module.exports = formValidation;
+
