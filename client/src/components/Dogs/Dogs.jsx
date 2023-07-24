@@ -1,45 +1,45 @@
-import React, { useState } from 'react';
-import Home from '../Home/Home.jsx';
-import style from './dogs.module.css';
-import Pagination from '../Pagination/Pagination';
+import axios from 'axios';
+import { useParams } from 'react-router-dom';
+import { useState, useEffect } from 'react';
+import { useSelector, useDispatch } from 'react-redux';
+import { getDogById } from '../../redux/actions';
 
-const Dogs = ({ dogs }) => {
-    const [currentPage, setCurrentPage] = useState(1);
-    const dogsPerPage = 8;
+const URL = 'https://api.thedogapi.com/v1/breeds';
 
-    // Calcular el índice inicial y final de los perros en la página actual
-    const indexOfLastDog = currentPage * dogsPerPage;
-    const indexOfFirstDog = indexOfLastDog - dogsPerPage;
-    const currentDogs = dogs.slice(indexOfFirstDog, indexOfLastDog);
+const Detail = () => {
+    const { id } = useParams();
+    const dispatch = useDispatch();
+    const dog = useSelector((state) => state.detail.detail);
 
-    // Función de cambio de página
-    const handlePageChange = (pageNumber) => {
-        setCurrentPage(pageNumber);
-    };
+    useEffect(() => {
+        axios(`${URL}/${id}`)
+            .then(response => response.data)
+            .then((data) => {
+                if (data.name) {
+                    dispatch(getDogById(data));
+                } else {
+                    window.alert('No hay perros con ese id');
+                }
+            });
+    }, [dispatch, id]);
 
     return (
         <div>
-            <div className={style.dogCards}>
-                {/* Mostrar los perros correspondientes a la página actual */}
-                {currentDogs.map(({ id, image, name, temperament, weight }) => (
-                    <Home
-                        key={id}
-                        image={image}
-                        name={name}
-                        temperament={temperament}
-                        weight={weight}
-                    />
-                ))}
-            </div>
-
-            {/* Implementar la paginación */}
-            <Pagination
-                totalItems={dogs.length}
-                itemsPerPage={dogsPerPage}
-                onPageChange={handlePageChange}
-            />
+            {dog.name ? (
+                <div>
+                    <p>{dog.id}</p>
+                    <img src={dog.image.url} alt="img" />
+                    <h1>{dog.name}</h1>
+                    <p>{dog.height.metric}</p>
+                    <p>{dog.weight.metric}</p>
+                    <p>{dog.temperament}</p>
+                    <p>{dog.life_span}</p>
+                </div>
+            ) : (
+                <h2>Cargando...</h2>
+            )}
         </div>
     );
 };
 
-export default Dogs;
+export default Detail;

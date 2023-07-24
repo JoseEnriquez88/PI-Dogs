@@ -24,7 +24,7 @@ const postDogs = async (name, image, minHeight, maxHeight, minWeight, maxWeight,
     }
   });
 
-  await newDog.setTemperaments(temperamentInstances);
+  await newDog.addTemperaments(temperamentInstances);
 
   if (!newDog) throw new Error(`El perro ${newDog.name} no pudo crearse.`);
   return `El perro ${newDog.name} fue creado`;
