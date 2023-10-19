@@ -26,7 +26,7 @@ conn
 .then(() => {
   server.listen(3001, () => {
     // console.log('%s listening at', 3001); // eslint-disable-line no-console
-    console.log('Listening on port', 3001); // eslint-disable-line no-console
+    console.log('Listening at port', 3001); // eslint-disable-line no-console
   });
 })
 .catch((error) => console.log(error));
