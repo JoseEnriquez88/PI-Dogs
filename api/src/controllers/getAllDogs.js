@@ -1,4 +1,3 @@
-//obtiene los perros de la api y de la base de datos
 const getApiData = require("./getApiData");
 const getDogsDB = require("./getDogsDB");
 

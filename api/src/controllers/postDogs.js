@@ -1,8 +1,17 @@
-const { Dogs, Temperaments } = require('../db.js');
-const { Op } = require('sequelize');
-const formValidation = require('../helpers/formValidation.js');
+const { Dogs, Temperaments } = require("../db.js");
+const { Op } = require("sequelize");
+const formValidation = require("../helpers/formValidation.js");
 
-const postDogs = async (name, image, minHeight, maxHeight, minWeight, maxWeight, life_span, temperaments) => {
+const postDogs = async (
+  name,
+  image,
+  minHeight,
+  maxHeight,
+  minWeight,
+  maxWeight,
+  life_span,
+  temperaments
+) => {
   // formValidation(name, image, minHeight, maxHeight, minWeight, maxWeight, life_span, temperaments);
 
   const height = `${minHeight} - ${maxHeight}`;
@@ -13,15 +22,15 @@ const postDogs = async (name, image, minHeight, maxHeight, minWeight, maxWeight,
     image,
     height,
     weight,
-    life_span
+    life_span,
   });
 
   const temperamentInstances = await Temperaments.findAll({
     where: {
       name: {
-        [Op.in]: temperaments.map(temp => temp.toLowerCase())
-      }
-    }
+        [Op.in]: temperaments.map((temp) => temp.toLowerCase()),
+      },
+    },
   });
 
   await newDog.addTemperaments(temperamentInstances);

@@ -12,6 +12,13 @@ module.exports = (sequelize) => {
       name: {
         type: DataTypes.STRING,
         allowNull: false,
+        unique: true,
+        validate: {
+          notEmpty: {
+            args: true,
+            msg: "El nombre del perro no puede estar vacío. Por favor, proporciona un nombre.",
+          },
+        },
       },
       image: {
         type: DataTypes.STRING,
