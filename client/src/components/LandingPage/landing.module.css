@@ -1,67 +1,67 @@
-@import url('https://fonts.googleapis.com/css2?family=Sniglet&display=swap');
+@import url("https://fonts.googleapis.com/css2?family=Sniglet&display=swap");
 
 .mainCntnr {
-    display: flex;
-    flex-direction: column;
-    background-color: #efefef;
-    margin: 0 auto;
-    width: 60%;
-    padding: 5px;
-    border: 3px solid #494949;
-    border-radius: 20px;
-    margin-top: 20px;
-    margin-bottom: 20px;
+  display: flex;
+  flex-direction: column;
+  background-color: #efefef;
+  margin: 0 auto;
+  width: 60%;
+  padding: 5px;
+  border: 3px solid #494949;
+  border-radius: 20px;
+  margin-top: 20px;
+  margin-bottom: 20px;
 }
 
 .mainCntnr:hover {
-    box-shadow: 0 0.1rem 0.4rem rgba(0, 0, 0, 0.3);
+  box-shadow: 0 0.1rem 0.4rem rgba(0, 0, 0, 0.3);
 }
 
 .titulo {
-    font-family: Sniglet, cursive;
-    color: #494949;
-    text-align: center;
-    margin-top: 10px;
+  font-family: Sniglet, cursive;
+  color: #494949;
+  text-align: center;
+  margin-top: 10px;
 }
 
 .subContainer {
-    display: flex;
-    justify-content: center;
-    gap: 1rem;
+  display: flex;
+  justify-content: center;
+  gap: 1rem;
 }
 
 .minorContainer {
-    /* background-color: red; */
-    margin-top: 5rem;
-    width: 450px;
-    height: 150px;
+  /* background-color: red; */
+  margin-top: 5rem;
+  width: 450px;
+  height: 150px;
 }
 
 .carouselContainer {
-    margin-bottom: 1rem;
+  margin-bottom: 1rem;
 }
 
 .txtContainer {
-    /* background-color: black; */
-    width: 300px;
-    height: 150px;
-    margin: 0 auto;
+  /* background-color: black; */
+  width: 300px;
+  height: 150px;
+  margin: 0 auto;
 }
 
 .txt {
-    font-family: 'Sniglet', cursive;
-    font-size: 20px;
-    color: #494949;
+  font-family: "Sniglet", cursive;
+  font-size: 20px;
+  color: #494949;
 }
 
 .btn {
-    background-color: #494949;
-    padding: 10px;
-    border-radius: 50px;
-    font-family: Sniglet, cursive;
-    color: #fffdf6;
+  background-color: #494949;
+  padding: 10px;
+  border-radius: 50px;
+  font-family: Sniglet, cursive;
+  color: #fffdf6;
 }
 
 .btn:hover {
-    cursor: pointer;
+  cursor: pointer;
 }
